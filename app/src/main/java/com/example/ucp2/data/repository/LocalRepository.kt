@@ -15,6 +15,9 @@ class LocalRepository(private val dosenDao: DosenDao, private val mataKuliahDao:
     override fun getAllDosen():Flow<List<Dosen>> {
         return dosenDao.getAllDosen()
     }
+    override fun getDosen(nidn: String): Flow<Dosen?> {
+        return dosenDao.getDosen(nidn)
+    }
 
     //Fungsi MataKuliah
     override suspend fun insertMK(mataKuliah: MataKuliah) {
