@@ -13,4 +13,7 @@ interface DosenDao {
 
     @Insert
     suspend fun insertDosen(dosen: Dosen)
+
+    @Query("SELECT * FROM dosen WHERE nidn = :nidn ")
+    fun getDosen(nidn: String): Flow<Dosen>
 }
