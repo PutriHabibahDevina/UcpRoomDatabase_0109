@@ -26,7 +26,6 @@ interface MataKuliahDao {
     @Delete
     suspend fun deleteMataKuliah(mataKuliah: MataKuliah)
 
-    //Detail
     @Query("SELECT * FROM matakuliah WHERE kode = :kode ")
     fun getMataKuliah(kode: String): Flow<MataKuliah>
 }
