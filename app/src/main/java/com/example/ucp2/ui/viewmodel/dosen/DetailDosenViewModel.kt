@@ -20,21 +20,21 @@ class DetailDosenViewModel (
     private val repository: Repository
 ) : ViewModel(){
     private val _nidn: String = checkNotNull(savedStateHandle[DestinasiDosenDetail.NIDN])
-    val detailUiState: StateFlow<DetailUiState> = repository.getDosen(_nidn)
+    val detailUiState: StateFlow<DetailUiStateDosen> = repository.getDosen(_nidn)
         .filterNotNull()
         .map {
-            DetailUiState(
+            DetailUiStateDosen(
                 detailUiEvent = it.toDetailUiEvent(),
                 isLoading = false
             )
         }
         .onStart {
-            emit(DetailUiState(isLoading = true))
+            emit(DetailUiStateDosen(isLoading = true))
             delay(600)
         }
         .catch {
             emit(
-                DetailUiState(
+                DetailUiStateDosen(
                     isLoading = false,
                     isError = true,
                     errorMessage = it.message ?: "Terjadi kesalahan",
@@ -44,13 +44,13 @@ class DetailDosenViewModel (
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(2000),
-            initialValue = DetailUiState(
+            initialValue = DetailUiStateDosen(
                 isLoading = true,
             )
         )
 }
 
-data class DetailUiState(
+data class DetailUiStateDosen(
     val detailUiEvent: DosenEvent = DosenEvent(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
