@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ucp2.data.entity.MataKuliah
 import com.example.ucp2.data.repository.Repository
-import com.example.ucp2.ui.viewmodel.dosen.FormErrorState
 import kotlinx.coroutines.launch
 
 class MataKuliahViewModel(private val repository: Repository) : ViewModel()
@@ -23,7 +22,7 @@ class MataKuliahViewModel(private val repository: Repository) : ViewModel()
     //Validasi data input pengguna
     private fun validateFields():Boolean {
         val event = uiState.mataKuliahEvent
-        val errorState = FormErrorState(
+        val errorState = FormErrorStateMK(
             kode = if (event.kode.isNotEmpty()) null else "Kode matakuliah tidak boleh kosong",
             namaMK = if (event.namaMK.isNotEmpty()) null else "Nama matakuliah tidak boleh kosong",
             sks = if (event.sks.isNotEmpty()) null else "SKS tidak boleh kosong",
@@ -44,7 +43,7 @@ class MataKuliahViewModel(private val repository: Repository) : ViewModel()
                     uiState = uiState.copy(
                         snackBarMessage = "Data berhasil disimpan",
                         mataKuliahEvent = MataKuliahEvent(), //Reset input form
-                        isEntryValid = FormErrorState() //Reset error state
+                        isEntryValid = FormErrorStateMK() //Reset error state
                     )
                 } catch (e:Exception){
                     uiState = uiState.copy(
@@ -63,12 +62,12 @@ class MataKuliahViewModel(private val repository: Repository) : ViewModel()
 //Untuk menghandle perubahan, misal kaya error kan ntar tampilannya berubah jd error
 data class MataKuliahUIState(
     val mataKuliahEvent: MataKuliahEvent = MataKuliahEvent(),
-    val isEntryValid: FormErrorState = FormErrorState(),
+    val isEntryValid: FormErrorStateMK = FormErrorStateMK(),
     val snackBarMessage: String? = null //kayak pop up
 )
 
 //Untuk validasi
-data class FormErrorState(
+data class FormErrorStateMK(
     val kode: String? = null,
     val namaMK: String? = null,
     val sks: String? = null,
