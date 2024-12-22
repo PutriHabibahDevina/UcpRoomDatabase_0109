@@ -22,7 +22,7 @@ class DosenViewModel(private val repository: Repository) : ViewModel()
     //Validasi data input pengguna
     private fun validateFields():Boolean {
         val event = uiState.dosenEvent
-        val errorState = FormErrorState(
+        val errorState = FormErrorStateDosen(
             nidn = if (event.nidn.isNotEmpty()) null else "NIDN tidak boleh kosong",
             nama = if (event.nama.isNotEmpty()) null else "Nama tidak boleh kosong",
             jenisKelamin = if (event.jenisKelamin.isNotEmpty()) null else "Jenis Kelamin tidak boleh kosong"
@@ -40,7 +40,7 @@ class DosenViewModel(private val repository: Repository) : ViewModel()
                     uiState = uiState.copy(
                         snackBarMessage = "Data berhasil disimpan",
                         dosenEvent = DosenEvent(), //Reset input form
-                        isEntryValid = FormErrorState() //Reset error state
+                        isEntryValid = FormErrorStateDosen() //Reset error state
                     )
                 } catch (e:Exception){
                     uiState = uiState.copy(
@@ -59,12 +59,12 @@ class DosenViewModel(private val repository: Repository) : ViewModel()
 //Untuk menghandle perubahan, misal kaya error kan ntar tampilannya berubah jd error
 data class DosenUIState(
     val dosenEvent: DosenEvent = DosenEvent(),
-    val isEntryValid: FormErrorState = FormErrorState(),
+    val isEntryValid: FormErrorStateDosen = FormErrorStateDosen(),
     val snackBarMessage: String? = null //kayak pop up
 )
 
 //Untuk validasi
-data class FormErrorState(
+data class FormErrorStateDosen(
     val nidn: String? = null,
     val nama: String? = null,
     val jenisKelamin: String? = null
