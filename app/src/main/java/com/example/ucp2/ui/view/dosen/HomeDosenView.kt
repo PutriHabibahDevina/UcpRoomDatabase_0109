@@ -38,11 +38,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.praktikum7.ui.viewmodel.HomeDosenViewModel
 import com.example.praktikum7.ui.viewmodel.HomeUiState
 import com.example.ucp2.data.entity.Dosen
-import com.example.ucp2.ui.navigation.AlamatNavigasi
+import com.example.ucp2.ui.navigation.AlamatDosenNavigasi
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
-object DestinasiHome : AlamatNavigasi {
+object DestinasiDosenHome : AlamatDosenNavigasi {
     override val route: String = "home_dosen"
 }
 
