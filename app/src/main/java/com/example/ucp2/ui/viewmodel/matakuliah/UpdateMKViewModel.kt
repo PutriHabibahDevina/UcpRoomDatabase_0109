@@ -8,8 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ucp2.data.entity.MataKuliah
 import com.example.ucp2.data.repository.Repository
-import com.example.ucp2.ui.view.matakuliah.DestinasiUpdate
-import com.example.ucp2.ui.viewmodel.dosen.FormErrorState
+import com.example.ucp2.ui.navigation.DestinasiMKUpdate
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -21,7 +20,7 @@ class UpdateMKViewModel (
     var updateUiState by mutableStateOf(MataKuliahUIState())
         private set
 
-    private val _kode: String = checkNotNull(savedStateHandle[DestinasiUpdate.KODE])
+    private val _kode: String = checkNotNull(savedStateHandle[DestinasiMKUpdate.KODE])
 
     init{
         viewModelScope.launch {
@@ -40,7 +39,7 @@ class UpdateMKViewModel (
 
     fun validateFields(): Boolean{
         val event = updateUiState.mataKuliahEvent
-        val errorState = FormErrorState(
+        val errorState = FormErrorStateMK(
             kode = if (event.kode.isNotEmpty()) null else "Kode matakuliah tidak boleh kosong",
             namaMK = if (event.namaMK.isNotEmpty()) null else "Nama matakuliah tidak boleh kosong",
             sks = if (event.sks.isNotEmpty()) null else "SKS tidak boleh kosong",
@@ -62,7 +61,7 @@ class UpdateMKViewModel (
                     updateUiState = updateUiState.copy(
                         snackBarMessage = "Data berhasil diupdate",
                         mataKuliahEvent = MataKuliahEvent(),
-                        isEntryValid = FormErrorState()
+                        isEntryValid = FormErrorStateMK()
                     )
                     println("snackBarMessage diatur: ${updateUiState.snackBarMessage}")
                 } catch (e: Exception) {
