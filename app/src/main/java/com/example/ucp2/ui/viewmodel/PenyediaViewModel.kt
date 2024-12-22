@@ -7,8 +7,10 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.praktikum7.ui.viewmodel.HomeDosenViewModel
 import com.example.ucp2.KrsApp
-import com.example.ucp2.ui.viewmodel.dosen.DetailViewModel
+import com.example.ucp2.ui.viewmodel.dosen.DetailDosenViewModel
 import com.example.ucp2.ui.viewmodel.dosen.DosenViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.DetailMKViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.HomeMKViewModel
 import com.example.ucp2.ui.viewmodel.matakuliah.MataKuliahViewModel
 import com.example.ucp2.ui.viewmodel.matakuliah.UpdateMKViewModel
 
