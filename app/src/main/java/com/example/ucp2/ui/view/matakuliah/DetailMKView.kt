@@ -34,15 +34,15 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.data.entity.MataKuliah
 import com.example.ucp2.ui.customwidget.TopAppBar
-import com.example.ucp2.ui.viewmodel.dosen.DetailUiState
-import com.example.ucp2.ui.viewmodel.dosen.DetailViewModel
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.DetailMKViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.DetailUiStateMK
 import com.example.ucp2.ui.viewmodel.matakuliah.toMataKuliahEntity
 
 @Composable
 fun DetailMKView(
     modifier: Modifier = Modifier,
-    viewModel: DetailViewModel = viewModel (factory = PenyediaViewModel.Factory),
+    viewModel: DetailMKViewModel = viewModel (factory = PenyediaViewModel.Factory),
     onBack: () -> Unit = { },
     onEditClick: (String) -> Unit = { },
     onDeleteClick: () -> Unit = { }
@@ -91,7 +91,7 @@ fun DetailMKView(
 @Composable
 fun BodyDetailMK (
     modifier: Modifier = Modifier,
-    detailUiState: DetailUiState = DetailUiState(),
+    detailUiState: DetailUiStateMK = DetailUiStateMK(),
     onDeleteClick: () -> Unit = { }
 ) {
     var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
