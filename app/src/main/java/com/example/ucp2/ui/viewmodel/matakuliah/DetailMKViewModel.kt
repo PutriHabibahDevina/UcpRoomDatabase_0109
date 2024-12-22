@@ -21,21 +21,21 @@ class DetailMKViewModel (
     private val repository: Repository
 ) : ViewModel(){
     private val _kode: String = checkNotNull(savedStateHandle[DestinasiMKDetail.KODE])
-    val detailUiState: StateFlow<DetailUiState> = repository.getMK(_kode)
+    val detailUiState: StateFlow<DetailUiStateMK> = repository.getMK(_kode)
         .filterNotNull()
         .map {
-            DetailUiState(
+            DetailUiStateMK(
                 detailUiEvent = it.toDetailUiEvent(),
                 isLoading = false
             )
         }
         .onStart {
-            emit(DetailUiState(isLoading = true))
+            emit(DetailUiStateMK(isLoading = true))
             delay(600)
         }
         .catch {
             emit(
-                DetailUiState(
+                DetailUiStateMK(
                     isLoading = false,
                     isError = true,
                     errorMessage = it.message ?: "Terjadi kesalahan",
@@ -45,7 +45,7 @@ class DetailMKViewModel (
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(2000),
-            initialValue = DetailUiState(
+            initialValue = DetailUiStateMK(
                 isLoading = true,
             )
         )
@@ -59,7 +59,7 @@ class DetailMKViewModel (
     }
 }
 
-data class DetailUiState(
+data class DetailUiStateMK(
     val detailUiEvent: MataKuliahEvent = MataKuliahEvent(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
