@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.ui.customwidget.TopAppBar
-import com.example.ucp2.ui.navigation.AlamatNavigasi
+import com.example.ucp2.ui.navigation.AlamatMKNavigasi
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
 import com.example.ucp2.ui.viewmodel.matakuliah.UpdateMKViewModel
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +23,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-object DestinasiUpdate : AlamatNavigasi {
+object DestinasiMKUpdate : AlamatMKNavigasi {
     override val route: String = "update_mk"
 }
 
