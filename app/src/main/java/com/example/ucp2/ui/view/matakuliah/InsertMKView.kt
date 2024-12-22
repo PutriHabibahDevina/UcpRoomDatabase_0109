@@ -27,10 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.ui.customwidget.TopAppBar
 import com.example.ucp2.ui.navigation.AlamatMKNavigasi
-import com.example.ucp2.ui.viewmodel.dosen.FormErrorState
 import com.example.ucp2.ui.viewmodel.matakuliah.MataKuliahEvent
 import com.example.ucp2.ui.viewmodel.matakuliah.MataKuliahViewModel
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.FormErrorStateMK
 import com.example.ucp2.ui.viewmodel.matakuliah.MataKuliahUIState
 import kotlinx.coroutines.launch
 
@@ -123,7 +123,7 @@ fun FormMK(
     modifier: Modifier = Modifier,
     mataKuliahEvent: MataKuliahEvent = MataKuliahEvent(),
     onValueChange: (MataKuliahEvent) -> Unit = {},
-    errorState: FormErrorState = FormErrorState()
+    errorState: FormErrorStateMK = FormErrorStateMK()
 ) {
     val jenis = listOf("Wajib", "Peminatan")
 
