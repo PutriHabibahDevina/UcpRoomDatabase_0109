@@ -32,8 +32,8 @@ import com.example.ucp2.ui.navigation.AlamatDosenNavigasi
 import com.example.ucp2.ui.viewmodel.dosen.DosenEvent
 import com.example.ucp2.ui.viewmodel.dosen.DosenUIState
 import com.example.ucp2.ui.viewmodel.dosen.DosenViewModel
-import com.example.ucp2.ui.viewmodel.dosen.FormErrorState
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
+import com.example.ucp2.ui.viewmodel.dosen.FormErrorStateDosen
 import kotlinx.coroutines.launch
 
 object DestinasiInsert : AlamatDosenNavigasi {
@@ -125,7 +125,7 @@ fun FormDosen(
     modifier: Modifier = Modifier,
     dosenEvent: DosenEvent = DosenEvent(),
     onValueChange: (DosenEvent) -> Unit = {},
-    errorState: FormErrorState = FormErrorState()
+    errorState: FormErrorStateDosen = FormErrorStateDosen()
 ) {
     val jenisKelamin = listOf("Laki-laki", "Perempuan")
 
