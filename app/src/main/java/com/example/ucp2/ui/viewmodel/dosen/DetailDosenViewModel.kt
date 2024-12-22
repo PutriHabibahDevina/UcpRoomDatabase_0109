@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class DetailViewModel (
+class DetailDosenViewModel (
     savedStateHandle: SavedStateHandle,
     private val repository: Repository
 ) : ViewModel(){
